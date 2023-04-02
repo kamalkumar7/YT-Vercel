@@ -16,6 +16,9 @@ const __dirname = path.dirname(__filename);
 
 
 const app = express();
+app.listen(400,()=>{
+  console.log("connected");
+})
 
 app.use(cors());
 
@@ -35,6 +38,7 @@ const connect = () => {
     });
 };
 
+connect();
 //middlewares
 app.use(cookieParser())
 app.use(express.json())
@@ -61,9 +65,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
-  connect();
-  console.log("Connected to Server");
-});
+
 
 
