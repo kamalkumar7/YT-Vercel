@@ -3,15 +3,13 @@ import Video from "../models/Video.js";
 import { createError } from "../error.js";
 
 export const addVideo = async (req, res, next) => {
-  // console.log(req.user.id);
-  // const newVideo = new Video({ userId: req.user.id, ...req.body });
-  // try {
-  //   const savedVideo = await newVideo.save();
-  //   res.status(200).json(savedVideo);
-  // } catch (err) {
-  //   next(err);
-  // }
-  res.json("got this");
+  const newVideo = new Video({ userId: req.user.id, ...req.body });
+  try {
+    const savedVideo = await newVideo.save();
+    res.status(200).json(savedVideo);
+  } catch (err) {
+    next(err);
+  }
 };
 
 export const updateVideo = async (req, res, next) => {
@@ -71,6 +69,7 @@ export const addView = async (req, res, next) => {
 };
 
 export const random = async (req, res, next) => {
+//   res.status(200).json("nice");
   try {
     const videos = await Video.aggregate([{ $sample: { size: 40 } }]);
     res.status(200).json(videos);
