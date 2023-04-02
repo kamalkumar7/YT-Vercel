@@ -24,7 +24,7 @@ app.listen(400, ()=>{
 app.use(cors());
 
 app.get('/hi',(req,res)=>{
-  res.json("You are awesome")
+  res.json(process.env.MONGO);
 })
 dotenv.config();
 
