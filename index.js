@@ -17,10 +17,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.listen(400, ()=>{
-  console.log("connected");
-})
-
 app.use(cors());
 
 app.get('/hi',(req,res)=>{
@@ -66,7 +62,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(8800, () => {
-  connect();
+  // connect();
   console.log("Connected to Server");
 });
 
